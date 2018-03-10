@@ -52,15 +52,36 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
-static const int64_t COIN_YEAR_REWARD = 1 * CENT; // 1% per year
+inline int64_t GetCoinYearReward(int nHeight) {
+    int64_t nMult;
 
-inline bool IsProtocolV1RetargetingFixed(int nHeight) { return TestNet() || nHeight > 38423; }
-inline bool IsProtocolV2(int nHeight) { return TestNet() || nHeight > 319000; }
-inline bool IsProtocolV3(int64_t nTime) { return TestNet() || nTime > 1444028400; }
+    switch (nHeight) {
+        case 0 ... 10000:
+            nMult = 25;
+            break;
+        case 10001 ... 50000:
+            nMult = 15;
+            break;
+        case 50001 ... 100000:
+            nMult = 10;
+            break;
+        default:
+            nMult = 5;
+            break;
+    }
+
+    return COIN * nMult * 0.5;
+}
+
+inline bool IsProtocolV1RetargetingFixed(int nHeight) { return true; }
+inline bool IsProtocolV2(int nHeight) { return true; }
+inline bool IsProtocolV3(int64_t nTime) { return true; }
 
 inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 10 * 60; }
 inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 15; }
-inline int64_t FutureDrift(int64_t nTime, int nHeight) { return IsProtocolV2(nHeight) ? FutureDriftV2(nTime) : FutureDriftV1(nTime); }
+inline int64_t FutureDrift(int64_t nTime, int nHeight) {
+    return IsProtocolV2(nHeight) && nHeight > Params().LastPOWBlock() ? FutureDriftV2(nTime) : FutureDriftV1(nTime);
+}
 
 inline unsigned int GetTargetSpacing(int nHeight) { return IsProtocolV2(nHeight) ? 64 : 60; }
 
@@ -95,7 +116,7 @@ extern bool fUseFastIndex;
 extern unsigned int nDerivationMethodIndex;
 
 // Minimum disk space required - used in CheckDiskSpace()
-static const uint64_t nMinDiskSpace = 52428800;
+static const uint64_t nMinDiskSpace = 1073741824;
 
 class CReserveKey;
 class CTxDB;
@@ -133,7 +154,7 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles);
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits);
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake);
-int64_t GetProofOfWorkReward(int64_t nFees);
+int64_t GetProofOfWorkReward(const CBlockIndex* pindexPrev, int64_t nFees);
 int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees);
 bool IsInitialBlockDownload();
 bool IsConfirmedInNPrevBlocks(const CTxIndex& txindex, const CBlockIndex* pindexFrom, int nMaxDepth, int& nActualDepth);
