@@ -5,15 +5,41 @@
 #else
 #define UNUSED
 #endif
-static const char UNUSED *bitcoin_strings[] = {QT_TRANSLATE_NOOP("bitcoin-core", "BlackCoin version"),
+static const char UNUSED *bitcoin_strings[] = {QT_TRANSLATE_NOOP("bitcoin-core", "DSTRA version"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Usage:"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Send command to -server or blackcoind"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Send command to -server or dstrad"),
 QT_TRANSLATE_NOOP("bitcoin-core", "List commands"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Get help for a command"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Warning: This version is obsolete, upgrade required!"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Error: Disk space is low!"),
+QT_TRANSLATE_NOOP("bitcoin-core", ""
+"This is a pre-release test build - use at your own risk - do not use for "
+"mining or merchant applications"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Error"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Warning"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Information"),
+QT_TRANSLATE_NOOP("bitcoin-core", ""
+"You must set rpcpassword=<password> in the configuration file:\n"
+"%s\n"
+"If the file does not exist, create it with owner-readable-only file "
+"permissions."),
+QT_TRANSLATE_NOOP("bitcoin-core", "Error: Wallet locked, unable to create transaction!"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Error: Wallet unlocked for staking only, unable to create transaction."),
+QT_TRANSLATE_NOOP("bitcoin-core", ""
+"Error: This transaction requires a transaction fee of at least %s because of "
+"its amount, complexity, or use of recently received funds!"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Error: Transaction creation failed!"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Sending..."),
+QT_TRANSLATE_NOOP("bitcoin-core", ""
+"Error: The transaction was rejected! This might happen if some of the coins "
+"in your wallet were already spent, such as if you used a copy of wallet.dat "
+"and coins were spent in the copy but not marked as spent here."),
+QT_TRANSLATE_NOOP("bitcoin-core", "Invalid amount"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Insufficient funds"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Options:"),
 QT_TRANSLATE_NOOP("bitcoin-core", "This help message"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Specify configuration file (default: blackcoin.conf)"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Specify pid file (default: blackcoind.pid)"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Specify configuration file (default: dstra.conf)"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Specify pid file (default: dstrad.pid)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Specify data directory"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Specify wallet file (within data directory)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Set database cache size in megabytes (default: 25)"),
@@ -91,6 +117,9 @@ QT_TRANSLATE_NOOP("bitcoin-core", "How many blocks to check at startup (default:
 QT_TRANSLATE_NOOP("bitcoin-core", "How thorough the block verification is (0-6, default: 1)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Imports blocks from external blk000?.dat file"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Keep at most <n> MiB of unconnectable blocks in memory (default: %u)"),
+QT_TRANSLATE_NOOP("bitcoin-core", ""
+"Maximum size of data in data carrier transactions we relay and mine "
+"(default: %u)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Block creation options:"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Set minimum block size in bytes (default: 0)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Set maximum block size in bytes (default: 250000)"),
@@ -110,11 +139,10 @@ QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: -paytxfee is set very high! This is the transaction fee you will "
 "pay if you send a transaction."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Invalid amount for -mininput=<amount>: '%s'"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Initialization sanity check failed. BlackCoin is shutting down."),
+QT_TRANSLATE_NOOP("bitcoin-core", "Initialization sanity check failed. DSTRA is shutting down."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Wallet %s resides outside data directory %s."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Cannot obtain a lock on data directory %s. BlackCoin is probably already "
-"running."),
+"Cannot obtain a lock on data directory %s. DSTRA is probably already running."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Verifying database integrity..."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error initializing wallet database environment %s!"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
@@ -136,63 +164,36 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet corrupted"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: error reading wallet.dat! All keys read correctly, but transaction "
 "data or address book entries might be missing or incorrect."),
-QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet requires newer version of BlackCoin"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Wallet needed to be rewritten: restart BlackCoin to complete"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet requires newer version of DSTRA"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Wallet needed to be rewritten: restart DSTRA to complete"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Cannot downgrade wallet"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Cannot write default address"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Rescanning..."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Loading addresses..."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Done loading"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Warning: This version is obsolete, upgrade required!"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Error: Disk space is low!"),
-QT_TRANSLATE_NOOP("bitcoin-core", ""
-"This is a pre-release test build - use at your own risk - do not use for "
-"mining or merchant applications"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Error"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Warning"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Information"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
-"your clock is wrong BlackCoin will not work properly."),
-QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Unable to bind to %s on this computer. BlackCoin is probably already running."),
-QT_TRANSLATE_NOOP("bitcoin-core", "Unable to bind to %s on this computer (bind returned error %d, %s)"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Error: Wallet locked, unable to create transaction!"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Error: Wallet unlocked for staking only, unable to create transaction."),
-QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Error: This transaction requires a transaction fee of at least %s because of "
-"its amount, complexity, or use of recently received funds!"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Error: Transaction creation failed!"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Sending..."),
-QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Error: The transaction was rejected! This might happen if some of the coins "
-"in your wallet were already spent, such as if you used a copy of wallet.dat "
-"and coins were spent in the copy but not marked as spent here."),
-QT_TRANSLATE_NOOP("bitcoin-core", "Invalid amount"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Insufficient funds"),
-QT_TRANSLATE_NOOP("bitcoin-core", ""
-"You must set rpcpassword=<password> in the configuration file:\n"
-"%s\n"
-"If the file does not exist, create it with owner-readable-only file "
-"permissions."),
+"your clock is wrong DSTRA will not work properly."),
 QT_TRANSLATE_NOOP("bitcoin-core", "To use the %s option"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "%s, you must set a rpcpassword in the configuration file:\n"
 "%s\n"
 "It is recommended you use the following random password:\n"
-"rpcuser=blackcoinrpc\n"
+"rpcuser=dstrarpc\n"
 "rpcpassword=%s\n"
 "(you do not need to remember this password)\n"
 "The username and password MUST NOT be the same.\n"
 "If the file does not exist, create it with owner-readable-only file "
 "permissions.\n"
 "It is also recommended to set alertnotify so you are notified of problems;\n"
-"for example: alertnotify=echo %%s | mail -s \"BlackCoin Alert\" admin@foo."
-"com\n"),
+"for example: alertnotify=echo %%s | mail -s \"DSTRA Alert\" admin@foo.com\n"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "An error occurred while setting up the RPC port %u for listening on IPv6, "
 "falling back to IPv4: %s"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "An error occurred while setting up the RPC port %u for listening on IPv4: %s"),
+QT_TRANSLATE_NOOP("bitcoin-core", ""
+"Unable to bind to %s on this computer. DSTRA is probably already running."),
+QT_TRANSLATE_NOOP("bitcoin-core", "Unable to bind to %s on this computer (bind returned error %d, %s)"),
 };

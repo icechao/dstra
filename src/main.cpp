@@ -22,7 +22,7 @@ using namespace std;
 using namespace boost;
 
 #if defined(NDEBUG)
-# error "BlackCoin cannot be compiled without assertions."
+# error "DSTRA cannot be compiled without assertions."
 #endif
 
 //
@@ -2642,7 +2642,7 @@ struct CImportingNow
 
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
-    RenameThread("blackcoin-loadblk");
+    RenameThread("dstra-loadblk");
 
     CImportingNow imp;
 
