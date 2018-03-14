@@ -50,12 +50,12 @@ bool AppInit(int argc, char* argv[])
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
             // First part of help message is specific to bitcoind / RPC client
-            std::string strUsage = _("BlackCoin version") + " " + FormatFullVersion() + "\n\n" +
+            std::string strUsage = _("DSTRA version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
-                  "  blackcoind [options]                     " + "\n" +
-                  "  blackcoind [options] <command> [params]  " + _("Send command to -server or blackcoind") + "\n" +
-                  "  blackcoind [options] help                " + _("List commands") + "\n" +
-                  "  blackcoind [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  dstrad [options]                     " + "\n" +
+                  "  dstrad [options] <command> [params]  " + _("Send command to -server or dstrad") + "\n" +
+                  "  dstrad [options] help                " + _("List commands") + "\n" +
+                  "  dstrad [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessage();
 
@@ -65,7 +65,7 @@ bool AppInit(int argc, char* argv[])
 
         // Command-line RPC
         for (int i = 1; i < argc; i++)
-            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "blackcoin:"))
+            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "dstra:"))
                 fCommandLine = true;
 
         if (fCommandLine)

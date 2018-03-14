@@ -1,4 +1,8 @@
 # Copyright (c) 2009-2010 Satoshi Nakamoto
+# Copyright (c) 2018 NEETCOIN developers
+# Copyright (c) 2018 DSTRA developers
+# Mac OS X makefile for dstra
+
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -95,7 +99,7 @@ ifeq (${USE_WALLET}, 1)
         obj/walletdb.o
 endif
 
-all: blackcoind.exe
+all: dstrad.exe
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -114,11 +118,11 @@ obj/scrypt-x86.o: scrypt-x86.S
 obj/scrypt-x86_64.o: scrypt-x86_64.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 
-blackcoind.exe: $(OBJS:obj/%=obj/%)
+dstrad.exe: $(OBJS:obj/%=obj/%)
 	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
-	-del /Q blackcoind
+	-del /Q dstrad
 	-del /Q obj\*
 
 FORCE:

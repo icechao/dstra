@@ -7,23 +7,23 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleGetInfoString</key>
-	<string>BlackCoin-Qt</string>
+	<string>DSTRA-Qt</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleExecutable</key>
-	<string>BlackCoin-Qt</string>
+	<string>DSTRA-Qt</string>
 	<key>CFBundleIdentifier</key>
-	<string>co.blackcoin.BlackCoin-Qt</string>
+	<string>io.dstra.DSTRA-Qt</string>
         <key>CFBundleURLTypes</key>
         <array>
           <dict>
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
             <key>CFBundleURLName</key>
-            <string>co.blackcoin.BlackCoinPayment</string>
+            <string>io.dstra.DSTRAPayment</string>
             <key>CFBundleURLSchemes</key>
             <array>
-              <string>blackcoin</string>
+              <string>dstra</string>
             </array>
           </dict>
         </array>
